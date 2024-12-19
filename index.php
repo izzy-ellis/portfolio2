@@ -62,6 +62,68 @@
 			transform: rotateY(180deg);
 		}
 
+		.button {
+			display: inline-block;
+			border: 1px solid;
+			border-color: #012766;
+			background: #012766;
+			padding: 10px 16px;
+			border-radius: 4px;
+			color: #ffffff;
+		}
+
+		[id^=modal] {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+		}
+
+		[id^=modal]:target {
+			display: block;
+		}
+
+		input[type=checkbox] {
+			position: absolute;
+			clip: rect(0, 0, 0, 0);
+		}
+
+		.popup {
+			width: 100%;
+			height: 100%;
+			z-index: 99999;
+		}
+
+		.popup__overlay {
+			position: fixed;
+			z-index: 1;
+			display: block;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background: #000000b3;
+		}
+
+		.popup__wrapper {
+			position: fixed;
+			z-index: 9;
+			width: 80%;
+			max-width: 1200px;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 8px;
+			padding: 58px, 32px, 32px, 32px;
+			background: #fff;
+		}
+
+		.popup__close {
+			position: absolute;
+			top: 16px;
+			right: 26px;
+		}
+
 	</style>
 </head>
 <body>
@@ -77,9 +139,18 @@
 				<div class="flip-card-back">
 					<h1><?= substr($alphabet, $i, 1) ?></h1>
 					<p>The letter <?= substr($alphabet, $i, 1) ?></p>
+					<a class="button" href="#modal<?= $i ?>">More info</a>
 				</div>
 			</div>
-		</div> <?php
+		</div>
+		<div class="popup" id="modal<?= $i ?>">
+			<a class="popup__overlay" href="#"></a>
+			<div class="popup__wrapper">
+				<a class="popup__close" href="#">X</a>
+				<p>Some more info about the letter <?= substr($alphabet, $i, 1) ?></p>
+			</div>
+		</div>
+		 <?php
 	}
 	?>
 	</div>
