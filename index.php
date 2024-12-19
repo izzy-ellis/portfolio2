@@ -62,6 +62,9 @@
 			transform: rotateY(180deg);
 		}
 
+		/* all this was shamelessly stolen from StackOverflow
+		https://stackoverflow.com/questions/40645032/creating-multiple-modals-on-a-single-page
+		*/
 		.button {
 			display: inline-block;
 			border: 1px solid;
